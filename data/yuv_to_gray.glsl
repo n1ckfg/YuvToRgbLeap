@@ -8,7 +8,7 @@ float map(float s, float a1, float a2, float b1, float b2) {
 
 vec3 yuvToGray(vec3 yuv) {
 	float r = yuv.r * 0.299 + yuv.g * 0.587 + yuv.b * 0.114;
-	r = map(r, threshold, 1.0, 0, 1.0);
+	r = map(r, threshold, 1.0, 0.0, 1.0);
 	float g = r;
 	float b = r;
 
