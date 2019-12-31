@@ -1,9 +1,9 @@
 import processing.video.*;
 
 Capture cam;
-String camString = "name=Leap Motion,size=800x800,fps=24";
-//String camString = "name=HD Pro Webcam C920,size=640x360,fps=30";
-boolean printCameraList = true;
+//String camString = "name=Leap Motion,size=800x800,fps=24";
+String camString = "name=Leap Motion,size=400x400,fps=85";
+boolean printCameraList = false;
 
 void setupCam() {
   if (printCameraList) {
