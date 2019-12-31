@@ -11,10 +11,12 @@ import processing.video.*;
 
 Capture cam;
 String camString = "name=Leap Motion,size=800x800,fps=24";
+//String camString = "name=HD Pro Webcam C920,size=640x360,fps=30";
+
 boolean printCameraList = true;
 
 void setup() {
-  size(640, 480);
+  size(640, 480, P2D);
   
   if (printCameraList) {
     String[] cameras = Capture.list();
@@ -36,17 +38,22 @@ void setup() {
   // element from the array returned by list():
   cam = new Capture(this, camString);
   getCamWidthHeight(camString);
+  setupShaders();
+  
   cam.start();     
 }
 
 void draw() {
   if (cam.available() == true) {
     cam.read();
+    updateShaders();
   }
   //image(cam, 0, 0);
   // The following does the same, and is faster when just drawing the image
   // without any additional resizing, transformations, or tint.
-  set(0, 0, cam);
+  //set(0, 0, cam);
+  
+  filter(shader_yuv);
 }
 
 int[] getCamWidthHeight(String s) {
